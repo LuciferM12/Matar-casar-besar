@@ -48,8 +48,10 @@ const CaraTrasera = styled(Cara)`
     color: white;
     transform: rotateY(180deg);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 `;
 
 const ImagenEstilizada = styled.img`
@@ -88,7 +90,7 @@ const Barra = styled.div`
     justify-content: space-evenly;
 `;
 
-const Card = ({ imagen, titulo, valor }) => {
+const Card = ({ imagen, titulo, valor, edad }) => {
     const {casar, setCasar, besar, setBesar, matar, setMatar} = useContext(GlobalContext)
 
     const manejarEstado = (accion) =>{
@@ -125,7 +127,8 @@ const Card = ({ imagen, titulo, valor }) => {
                         <ImagenEstilizada src={imagen} alt={titulo} />
                     </CaraFrontal>
                     <CaraTrasera>
-                        <h2>{titulo}</h2>
+                        <h3>Nombre: {titulo}</h3>
+                        <h3>Edad: {edad}</h3>
                     </CaraTrasera>
                 </ImagenInterior>
             </ImagenContenedor>

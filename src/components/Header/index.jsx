@@ -26,19 +26,28 @@ const HeaderEstilizado = styled.header`
     @media (max-width: 480px){
         padding: 0;
     }
+    a{
+        text-decoration: none;
+        color: inherit;
+        transition: .3s ease-in;
+        &:hover{
+            color: #f04343;
+        }
+    }
+
 `
 
-const Header = () =>{
-    return(
+const Header = () => {
+    return (
         <HeaderEstilizado>
-            <img src={Logo} alt="logo"/>
+            <img src={Logo} alt="logo" />
             <div>
                 <IoIosAlert />
-                <FaGithub />
+                <a href="https://github.com/LuciferM12"><FaGithub /></a>
             </div>
         </HeaderEstilizado>
     )
-    
+
 }
 
 export default Header
