@@ -14,7 +14,7 @@ const HeaderEstilizado = styled.header`
     color: white;
     font-size: 2em;
     img{
-        width: 250px;
+        width: 150px;
     }
     div{
         :nth-child(n){
@@ -22,6 +22,9 @@ const HeaderEstilizado = styled.header`
         }
         display: flex;
         gap: 20px;
+    }
+    @media (max-width: 480px){
+        padding: 0;
     }
 `
 
