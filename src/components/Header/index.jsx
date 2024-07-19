@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Logo from "./logo.png"
 import { IoIosAlert } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const HeaderEstilizado = styled.header`
     width: 100%;
@@ -38,11 +40,12 @@ const HeaderEstilizado = styled.header`
 `
 
 const Header = () => {
+    const { abrirModal } = useContext(GlobalContext);
     return (
         <HeaderEstilizado>
             <img src={Logo} alt="logo" />
             <div>
-                <IoIosAlert />
+                <IoIosAlert onClick={() => abrirModal()} />
                 <a href="https://github.com/LuciferM12"><FaGithub /></a>
             </div>
         </HeaderEstilizado>

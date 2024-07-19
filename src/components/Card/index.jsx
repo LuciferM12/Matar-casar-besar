@@ -91,28 +91,28 @@ const Barra = styled.div`
 `;
 
 const Card = ({ imagen, titulo, valor, edad }) => {
-    const {casar, setCasar, besar, setBesar, matar, setMatar} = useContext(GlobalContext)
+    const { casar, setCasar, besar, setBesar, matar, setMatar } = useContext(GlobalContext)
 
-    const manejarEstado = (accion) =>{
-        if(accion ==="casar"){
+    const manejarEstado = (accion) => {
+        if (accion === "casar") {
             setCasar(valor)
-            if(besar === valor)
+            if (besar === valor)
                 setBesar(null)
-            if(matar === valor)
+            if (matar === valor)
                 setMatar(null)
-        }else{
-            if(accion === "matar" ){
+        } else {
+            if (accion === "matar") {
                 setMatar(valor)
-                if(besar === valor)
+                if (besar === valor)
                     setBesar(null)
-                if(casar === valor)
+                if (casar === valor)
                     setCasar(null)
             }
-            else{
+            else {
                 setBesar(valor)
-                if(casar === valor)
+                if (casar === valor)
                     setCasar(null)
-                if(matar === valor)
+                if (matar === valor)
                     setMatar(null)
             }
         }
@@ -133,9 +133,9 @@ const Card = ({ imagen, titulo, valor, edad }) => {
                 </ImagenInterior>
             </ImagenContenedor>
             <Barra>
-                <Botones $active={valor === besar } onClick={() =>manejarEstado("besar")}><FaKissWinkHeart /></Botones>
-                <Botones $active={valor === casar } onClick={() =>manejarEstado("casar")}><GiBigDiamondRing /></Botones>
-                <Botones $active={valor === matar } onClick={() =>manejarEstado("matar")}><GiCurvyKnife /></Botones>
+                <Botones $active={valor === besar} onClick={() => manejarEstado("besar")}><FaKissWinkHeart /></Botones>
+                <Botones $active={valor === casar} onClick={() => manejarEstado("casar")}><GiBigDiamondRing /></Botones>
+                <Botones $active={valor === matar} onClick={() => manejarEstado("matar")}><GiCurvyKnife /></Botones>
             </Barra>
         </CartaEstilizada>
     );

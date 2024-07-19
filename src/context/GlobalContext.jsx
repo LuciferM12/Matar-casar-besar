@@ -10,6 +10,7 @@ const GlobalContextProvider = ({ children }) => {
     const [matar, setMatar] = useState(null)
     const [besar, setBesar] = useState(null)
     const [data, setData] = useState([])
+    const [abierto, setAbierto] = useState(false)
 
     const generarRandoms = (min, max, count) => {
         const numbers = new Set();
@@ -28,6 +29,10 @@ const GlobalContextProvider = ({ children }) => {
         setMatar(null)
     }
 
+    const abrirModal = () => {
+        setAbierto(true)
+    }
+
     useEffect(() => {
         const randomNumbers = generarRandoms(1, 101, 3);
         setOpciones(randomNumbers);
@@ -41,7 +46,8 @@ const GlobalContextProvider = ({ children }) => {
                 try {
                     const results = await Promise.all(
                         opciones.map(opcion =>
-                            axios.get(`http://localhost:3001/actores/${opcion}`)
+                            axios.get(`https://fake-api-act-2.vercel.app/actores/${opcion}`)
+                            //axios.get(`http://localhost:3001/actores/${opcion}`)
                         )
                     );
                     const data = results.map(result => result.data);
@@ -65,7 +71,10 @@ const GlobalContextProvider = ({ children }) => {
             setBesar,
             opciones,
             data,
-            volverAGenerar
+            volverAGenerar,
+            abierto,
+            setAbierto,
+            abrirModal
         }}>
             {children}
         </GlobalContext.Provider>

@@ -19,7 +19,7 @@ const Seleccion = () => {
             {
                 data.map((dat, index) => {
                     return (
-                        <Card titulo={dat.nombre} imagen={dat.imagen} key={index} valor={index} edad={dat.edad}/>
+                        <Card titulo={dat.nombre} imagen={dat.imagen} key={index} valor={index} edad={dat.edad} />
                     )
                 })
             }

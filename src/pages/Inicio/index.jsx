@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Seleccion from "../../components/Seleccion"
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
+import ModalZoom from "../../components/ModalZoom";
 
 const PrincipalEstilizado = styled.main`
     min-height: 100vh;
@@ -34,12 +35,15 @@ const BotonEstilizado = styled.button`
 const Inicio = () => {
     const { volverAGenerar } = useContext(GlobalContext);
     return (
-        <PrincipalEstilizado>
-            <h3>Selecciona tu decisión</h3>
-            <Seleccion>
-            </Seleccion>
-            <BotonEstilizado onClick={(e) => volverAGenerar()} >Generar nuevo</BotonEstilizado>
-        </PrincipalEstilizado>
+        <>
+            <PrincipalEstilizado>
+                <h3>Selecciona tu decisión</h3>
+                <Seleccion>
+                </Seleccion>
+                <BotonEstilizado onClick={(e) => volverAGenerar()} >Generar nuevo</BotonEstilizado>
+            </PrincipalEstilizado>
+            <ModalZoom />
+        </>
     )
 }
 
