@@ -77,6 +77,7 @@ const Botones = styled.button`
     font-size: ${props => (props.$active ? '50px' : '30px')};
     gap: 5px;
     transition: .3s ease-in;
+    cursor: pointer;
     
     &:hover {
         cursor: pointer;
