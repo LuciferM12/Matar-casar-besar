@@ -1,12 +1,16 @@
-
+import Header from "./components/Header";
+import GlobalContextProvider from "./context/GlobalContextProvider";
+import Main from "./pages/Main";
 
 function App() {
-  
   return (
-    <>
-      <h1 className="text-3xl font-bold">Hello world!</h1>
-    </>
-  )
+    <div className="bg-stone-950">
+      <GlobalContextProvider>
+        <Header />
+        <Main />
+      </GlobalContextProvider>
+    </div>
+  );
 }
 
-export default App
+export default App;

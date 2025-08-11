@@ -19,64 +19,20 @@ const Card = ({ imageUrl, title, value, age }: CardProps) => {
   }
   const { elections, setElections } = context;
 
-  const manageState = (action: string) => {
-    const { kissed, married, killed } = elections;
-    switch (action) {
-      case "marry":
-        setElections((prev: PossibleActions) => ({
-          ...prev,
-          married: value,
-        }));
-        if (kissed === value) {
-          setElections((prev: PossibleActions) => ({
-            ...prev,
-            killed: null,
-          }));
-        }
-        if (killed === value) {
-          setElections((prev: PossibleActions) => ({
-            ...prev,
-            killed: null,
-          }));
-        }
-        break;
-      case "kill":
-        setElections((prev: PossibleActions) => ({
-          ...prev,
-          killed: value,
-        }));
-        if (kissed === value) {
-          setElections((prev: PossibleActions) => ({
-            ...prev,
-            kissed: null,
-          }));
-        }
-        if (married === value) {
-          setElections((prev: PossibleActions) => ({
-            ...prev,
-            married: null,
-          }));
-        }
-        break;
-      case "kiss":
-        setElections((prev: PossibleActions) => ({
-          ...prev,
-          kissed: value,
-        }));
-        if (married === value) {
-          setElections((prev: PossibleActions) => ({
-            ...prev,
-            married: null,
-          }));
-        }
-        if (killed === value) {
-          setElections((prev: PossibleActions) => ({
-            ...prev,
-            killed: null,
-          }));
-        }
-        break;
-    }
+  const manageState = (action: "marry" | "kill" | "kiss") => {
+    setElections((prev: PossibleActions) => {
+      const next = { ...prev };
+
+      if (action === "marry") next.married = value;
+      if (action === "kill") next.killed = value;
+      if (action === "kiss") next.kissed = value;
+
+      if (next.kissed === value && action !== "kiss") next.kissed = null;
+      if (next.married === value && action !== "marry") next.married = null;
+      if (next.killed === value && action !== "kill") next.killed = null;
+
+      return next;
+    });
   };
 
   return (
@@ -98,43 +54,46 @@ const Card = ({ imageUrl, title, value, age }: CardProps) => {
       </div>
       <div className="w-full flex justify-evenly">
         <button
-          className={`text-xl ${
-            elections.kissed === value
-              ? "text-red-300 text-5xl"
-              : "text-white text-3xl"
-          } w-1/3 bg-transparent border-none flex items-center justify-center p-5 gap-1.5 duration-300 ease-in hover:cursor-pointer ${
-            elections.kissed !== value && "scale-125"
-          }`}
+          className={`
+            text-4xl w-1/3 bg-transparent border-none flex items-center justify-center p-5 gap-1.5 
+            transition-transform duration-300 ease-in hover:cursor-pointer hover:scale-125
+            ${
+              elections.kissed === value
+                ? "text-red-400 scale-125"
+                : "text-white"
+            }
+          `}
           onClick={() => manageState("kiss")}
         >
-          {" "}
-          <FaKissWinkHeart />{" "}
+          <FaKissWinkHeart />
         </button>
         <button
-          className={`text-xl ${
-            elections.married === value
-              ? "text-red-300 text-5xl"
-              : "text-white text-3xl"
-          } w-1/3 bg-transparent border-none flex items-center justify-center p-5 gap-1.5 duration-300 ease-in hover:cursor-pointer ${
-            elections.married !== value && "scale-125"
-          }`}
+          className={`
+            text-4xl w-1/3 bg-transparent border-none flex items-center justify-center p-5 gap-1.5 
+            transition-transform duration-300 ease-in hover:cursor-pointer hover:scale-125
+            ${
+              elections.married === value
+                ? "text-red-400 scale-125"
+                : "text-white"
+            }
+          `}
           onClick={() => manageState("marry")}
         >
-          {" "}
-          <GiBigDiamondRing />{" "}
+          <GiBigDiamondRing />
         </button>
         <button
-          className={`text-xl ${
-            elections.killed === value
-              ? "text-red-300 text-5xl"
-              : "text-white text-3xl"
-          } w-1/3 bg-transparent border-none flex items-center justify-center p-5 gap-1.5 duration-300 ease-in hover:cursor-pointer ${
-            elections.killed !== value && "scale-125"
-          }`}
+          className={`
+            text-4xl w-1/3 bg-transparent border-none flex items-center justify-center p-5 gap-1.5 
+            transition-transform duration-300 ease-in hover:cursor-pointer hover:scale-125
+            ${
+              elections.killed === value
+                ? "text-red-400 scale-125"
+                : "text-white"
+            }
+          `}
           onClick={() => manageState("kill")}
         >
-          {" "}
-          <GiCurvyKnife />{" "}
+          <GiCurvyKnife />
         </button>
       </div>
     </div>

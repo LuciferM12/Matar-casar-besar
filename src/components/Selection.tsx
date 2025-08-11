@@ -15,10 +15,10 @@ const Selection = () => {
       {data.map((item, index) => {
         return (
           <Card
-            title={item.title}
-            imageUrl={item.imageUrl}
-            value={item.value}
-            age={item.age}
+            title={item.nombre}
+            imageUrl={item.imagen}
+            value={index}
+            age={item.edad}
             key={index}
           />
         );
