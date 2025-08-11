@@ -6,6 +6,12 @@ import {
   type PossibleActions,
 } from "./GlobalContext";
 
+interface Actor {
+  nombre: string;
+  imagen: string;
+  edad: number;
+}
+
 const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [options, setOptions] = useState<number[]>([]);
   const [elections, setElections] = useState<PossibleActions>({
@@ -13,7 +19,7 @@ const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
     married: null,
     killed: null,
   });
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Actor[]>([]);
   const [open, setOpen] = useState<boolean>(false);
 
   const generateRandoms = (
