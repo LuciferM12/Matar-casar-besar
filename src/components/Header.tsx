@@ -13,7 +13,7 @@ const Header = () => {
   const { openModal } = context;
 
   return (
-    <header className="w-full h-11/12 flex items-center justify-evenly p-5 box-border text-white text-4xl max-sm:p-0">
+    <header className="w-full h-[90px] flex items-center justify-evenly p-5 box-border text-white text-4xl max-sm:p-0">
       <img src="logo.png" className="w-36" alt="logo" />
       <div className="flex gap-5">
         <IoIosAlert onClick={() => openModal()} className="cursor-pointer" />
